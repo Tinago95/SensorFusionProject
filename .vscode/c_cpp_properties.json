@@ -3,8 +3,9 @@
         {
             "name": "Mac",
             "includePath": [
-                "${workspaceFolder}/**",
-                "/"
+            "${workspaceFolder}/**",
+            "/opt/homebrew/**",
+            "/opt/homebrew/Cellar/boost/**"
             ],
             "defines": [],
             "macFrameworkPath": [
