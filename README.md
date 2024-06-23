@@ -2,16 +2,13 @@
 
 <img src="https://github.com/awbrown90/SensorFusionHighway/blob/master/media/ObstacleDetectionFPS.gif" width="700" height="400" />
 
-### Welcome to the Sensor Fusion course for self-driving cars.
+In the field of autonomous vehicles, sensor fusion plays a crucial role in enhancing our understanding of the surrounding environment. By combining data from multiple sensors, such as lidar and radar, we can obtain a more comprehensive view of the world. In this code, we track multiple cars on the road, estimating their positions and speeds. Sensor fusion enables us to make informed decisions and ensure the safety and efficiency of self-driving cars.
 
-In this course we will be talking about sensor fusion, whch is the process of taking data from multiple sensors and combining it to give us a better understanding of the world around us. we will mostly be focusing on two sensors, lidar, and radar. By the end we will be fusing the data from these two sensors to track multiple cars on the road, estimating their positions and speed.
-
-**Lidar** sensing gives us high resolution data by sending out thousands of laser signals. These lasers bounce off objects, returning to the sensor where we can then determine how far away objects are by timing how long it takes for the signal to return. Also we can tell a little bit about the object that was hit by measuring the intesity of the returned signal. Each laser ray is in the infrared spectrum, and is sent out at many different angles, usually in a 360 degree range. While lidar sensors gives us very high accurate models for the world around us in 3D, they are currently very expensive, upwards of $60,000 for a standard unit.
+**Lidar** sensors provide high-resolution data by emitting laser signals that bounce off objects. By measuring the time it takes for the signals to return, we can determine the distance to objects. Additionally, the intensity of the returned signal provides information about the object. Lidar sensors emit laser rays at various angles, covering a 360-degree range. While lidar sensors offer accurate 3D models of the environment, they are currently expensive, with standard units costing over $60,000.
 
 **Radar** data is typically very sparse and in a limited range, however it can directly tell us how fast an object is moving in a certain direction. This ability makes radars a very pratical sensor for doing things like cruise control where its important to know how fast the car infront of you is traveling. Radar sensors are also very affordable and common now of days in newer cars.
 
 **Sensor Fusion** by combing lidar's high resoultion imaging with radar's ability to measure velocity of objects we can get a better understanding of the sorrounding environment than we could using one of the sensors alone.
-
 
 ## Installation
 
