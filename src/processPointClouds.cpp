@@ -28,9 +28,7 @@ typename pcl::PointCloud<PointT>::Ptr ProcessPointClouds<PointT>::FilterCloud(ty
 
     // Time segmentation process
     auto startTime = std::chrono::steady_clock::now();
-
     // TODO:: Fill in the function to do voxel grid point reduction and region based filtering
-
     auto endTime = std::chrono::steady_clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
     std::cout << "filtering took " << elapsedTime.count() << " milliseconds" << std::endl;
@@ -53,11 +51,33 @@ std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT
 template<typename PointT>
 std::pair<typename pcl::PointCloud<PointT>::Ptr, typename pcl::PointCloud<PointT>::Ptr> ProcessPointClouds<PointT>::SegmentPlane(typename pcl::PointCloud<PointT>::Ptr cloud, int maxIterations, float distanceThreshold)
 {
+     /**
+     * 1. Create a pcl::PointIndices object -> inliers
+     * 2. Create a pcl::SACSegmentation object  -> seg
+     * 3. Create a pcl::ModelCoefficients object -> coefficients
+     * 4. Set the methodType of seg to pcl::SAC_RANSAC -> random sample consensus algorithm
+     * 5. Set the modelType of seg to pcl::SACMODEL_PLANE
+     * 6. Set the maximum distance threshold of seg to distanceThreshold -> max distance (point to model) for point to be considerd an inlier.
+     *    it is a tolerance value that defines how close a point must be to the model in order to be considered an inlier
+     * 7. Set the maximum number of iterations of seg to maxIterations
+     * 8. segment the largest planar component in the input cloud
+     */
     // Time segmentation process
     auto startTime = std::chrono::steady_clock::now();
 	pcl::PointIndices::Ptr inliers;
-    // TODO:: Fill in this function to find inliers for the cloud.
-
+    // Find inliers for the cloud.
+    pcl::SACSegmentation<pcl::PointXYZ> seg;
+    pcl::ModelCoefficients::Ptr coefficients (new pcl::ModelCoefficients());
+    seg.setMethodType(pcl::SAC_RANSAC)
+    seg.setModelType(pcl::SACMODEL_PLANE);
+    seg.setDistanceThreshold(distanceThreshold)
+    seg.setMaxIterations(maxIterations);
+    seg.setInputCloud(cloud);   
+    seg.segment(*inliers, *coefficients);
+    if (inliers->indices.size() == 0)
+    {
+        std::cerr << "Could not estimate a planar model for the given dataset." << std::endl;
+    }
     auto endTime = std::chrono::steady_clock::now();
     auto elapsedTime = std::chrono::duration_cast<std::chrono::milliseconds>(endTime - startTime);
     std::cout << "plane segmentation took " << elapsedTime.count() << " milliseconds" << std::endl;

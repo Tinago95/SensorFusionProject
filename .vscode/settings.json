@@ -73,7 +73,8 @@
         "type_traits": "cpp",
         "utility": "cpp",
         "format": "cpp",
-        "filesystem": "cpp"
+        "filesystem": "cpp",
+        "codecvt": "cpp"
     },
     "cmake.configureOnOpen": false
 }
