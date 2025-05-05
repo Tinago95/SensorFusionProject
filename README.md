@@ -1,8 +1,5 @@
 # Sensor Fusion For Self-Driving Car
 
-<img src="https://github.com/awbrown90/SensorFusionHighway/blob/master/media/ObstacleDetectionFPS.gif" width="700" height="400" />
-
-In the field of autonomous vehicles, sensor fusion plays a crucial role in enhancing our understanding of the surrounding environment. By combining data from multiple sensors, such as lidar and radar, we can obtain a more comprehensive view of the world. In this code, we track multiple cars on the road, estimating their positions and speeds. Sensor fusion enables us to make informed decisions and ensure the safety and efficiency of self-driving cars.
 
 **Lidar** sensors provide high-resolution data by emitting laser signals that bounce off objects. By measuring the time it takes for the signals to return, we can determine the distance to objects. Additionally, the intensity of the returned signal provides information about the object. Lidar sensors emit laser rays at various angles, covering a 360-degree range. While lidar sensors offer accurate 3D models of the environment, they are currently expensive, with standard units costing over $60,000.
 
